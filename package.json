@@ -1,9 +1,9 @@
 {
-  "name": "chartity-dapp",
-  "description": "A Next.js starter that includes all you need to build amazing projects",
+  "name": "cryptonite",
+  "description": "",
   "version": "1.0.0",
   "private": true,
-  "author": "darlington gospel<darlingtongospel@gmail.com>",
+  "author": "cipherX",
   "license": "MIT",
   "keywords": [
     "nextjs",
@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@clerk/nextjs": "4.29.5",
     "@headlessui/react": "^1.7.17",
     "@rainbow-me/rainbowkit": "^1.0.10",
     "@rainbow-me/rainbowkit-siwe-next-auth": "^0.3.0",
@@ -37,6 +38,7 @@
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "ethers": "^6.7.1",
+    "husky": "9.0.10",
     "lokijs": "^1.5.12",
     "moment": "^2.29.4",
     "next": "13.4.19",

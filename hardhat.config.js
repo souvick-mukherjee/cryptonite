@@ -1,15 +1,15 @@
-require("@nomicfoundation/hardhat-toolbox");
+require('@nomicfoundation/hardhat-toolbox')
 
 module.exports = {
-  defaultNetwork: 'localhost',
+  defaultNetwork: 'polygon',
   networks: {
-    hardhat: {},
-    localhost: {
-      url: 'http://127.0.0.1:8545',
+    polygon: {
+      url: 'https://polygon-mumbai.g.alchemy.com/v2/PUqHFhEWs-w__TSNBAB3o6dZup0mGvmz',
+      accounts: ['5d2b873adc1b48f1ba95574083354a80a24b0e7769adab65bb4d7d80a43be333'],
     },
   },
   solidity: {
-    version: '0.8.17',
+    version: '0.8.19',
     settings: {
       optimizer: {
         enabled: true,
@@ -21,3 +21,4 @@ module.exports = {
     timeout: 40000,
   },
 }
+

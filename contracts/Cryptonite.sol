@@ -24,7 +24,7 @@ contract Cryptonite is Ownable, AccessControl {
   
   mapping(uint256 => EventStruct) events;
   mapping(uint256 => bool) public eventExist;
-  mapping(uint256 => EventStruct[]) interestedOf;
+  mapping(address => EventStruct[]) interestedOf;
   mapping(uint256 => UserStruct[]) supportersOf;
 
 
@@ -231,24 +231,11 @@ contract Cryptonite is Ownable, AccessControl {
     }
   }
 
-  function donate(uint256 id) public payable {
-    require(eventExist[id], 'Event Not Found');
-    require(!events[id].banned, 'Event Banned, contact admin');
-    require(msg.value > 0 ether, 'Donation cannot be zero');
-    require(events[id].raised < events[id].amount, 'Charity budget fulfilled');
 
-    supportersOf[id].push( getUser(msg.sender) );
 
-    events[id].raised += msg.value;
-    events[id].donations += 1;
-
-    payTo(events[id].owner, msg,value);
-  }
-
-  function interest(uint256 id) public view {
-    require(eventExist[id], 'Event Not Found');
-    require(!events[id].banned, 'Event Banned, contact admin');
-
-    interestedOf[msg.sender].push( getEvent(id) );
+  function payTo(address to, uint256 amount) internal {
+    (bool success, ) = payable(to).call{ value: amount }('');
+    require(success);
   }
 }
+

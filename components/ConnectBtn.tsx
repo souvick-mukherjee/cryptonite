@@ -1,6 +1,8 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image'
+import { FaArrowRight } from "react-icons/fa";
 import React from 'react'
+// import { SignInWithMetamaskButton } from "@clerk/nextjs";
 
 const ConnectBtn: React.FC = () => {
   return (
@@ -36,13 +38,17 @@ const ConnectBtn: React.FC = () => {
               if (!connected) {
                 return (
                   <button
-                    className="bg-transparent border border-green-600 hover:bg-green-700
-                        py-2 px-6 text-green-600 hover:text-white rounded-full
+                    className="bg-purple-600 border border-purple-600 hover:bg-black
+                        py-2 px-6 text-white rounded-lg
                         transition duration-300 ease-in-out"
-                    onClick={openConnectModal}
+                                           // onClick={openConnectModal}
                     type="button"
+                    // onClick={() => <SignInWithMetamaskButton/>} 
                   >
-                    Connect Wallet
+                    Connect Wallet to Login
+                    
+                    {/* Get Started  */}
+                    {/* Get Started <FaArrowRight /> */}
                   </button>
                 )
               }
@@ -50,8 +56,8 @@ const ConnectBtn: React.FC = () => {
               if (chain.unsupported) {
                 return (
                   <button
-                    className="bg-transparent border border-green-600 hover:bg-green-700
-                        py-2 px-6 text-green-600 hover:text-white rounded-full
+                    className="bg-transparent border border-purple-600 hover:bg-purple-700
+                        py-2 px-6 text-purple-600 hover:text-white rounded-md
                         transition duration-300 ease-in-out"
                     onClick={openChainModal}
                     type="button"
@@ -66,8 +72,8 @@ const ConnectBtn: React.FC = () => {
                   <button
                     onClick={openChainModal}
                     style={{ display: 'flex', alignItems: 'center' }}
-                    className="bg-transparent border border-green-600 hover:bg-green-700
-                    py-2 px-6 text-green-600 hover:text-white rounded-full
+                    className="bg-transparent border border-purple-600 hover:bg-purple-700
+                    py-2 px-6 text-purple-600 hover:text-white rounded-full
                     transition duration-300 ease-in-out"
                     type="button"
                   >
@@ -96,8 +102,8 @@ const ConnectBtn: React.FC = () => {
                   </button>
 
                   <button
-                    className="bg-transparent border border-green-600 hover:bg-green-700
-                    py-2 px-6 text-green-600 hover:text-white rounded-full
+                    className="bg-transparent border border-purple-600 hover:bg-purple-700
+                    py-2 px-6 text-purple-600 hover:text-white rounded-full
                     transition duration-300 ease-in-out"
                     onClick={openAccountModal}
                     type="button"

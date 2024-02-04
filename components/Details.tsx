@@ -28,7 +28,7 @@ const Details: React.FC<ComponentProp> = ({ charity, supports }) => {
           consequatur natus quasi velit.
         </span>
         <span className="flex">
-          <MdCheckCircle size={25} className="text-green-600" />
+          <MdCheckCircle size={25} className="text-purple-600" />
           <a target="_blank" href={charity.profile} className="underline">
             Learn more
           </a>

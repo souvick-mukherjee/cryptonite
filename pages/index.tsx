@@ -12,7 +12,7 @@ const Page: NextPage<{ charitiesData: CharityStruct[] }> = ({ charitiesData }) =
   return (
     <div>
       <Head>
-        <title>Charity Tracker</title>
+        <title>Cryptonite</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner />
@@ -21,9 +21,9 @@ const Page: NextPage<{ charitiesData: CharityStruct[] }> = ({ charitiesData }) =
       <div className="h-10"></div>
       <Quote />
       <div className="h-10"></div>
-      <Start />
-      <div className="h-10"></div>
-      <NavBtn />
+      {/* <Start />
+      <div className="h-10"></div> */}
+      {/* <NavBtn /> */}
     </div>
   )
 }
@@ -31,7 +31,7 @@ const Page: NextPage<{ charitiesData: CharityStruct[] }> = ({ charitiesData }) =
 export default Page
 
 export const getServerSideProps = async () => {
-  const charitiesData: CharityStruct[] = generateCharities(5)
+  const charitiesData: CharityStruct[] = generateCharities(6)
   return {
     props: { charitiesData: JSON.parse(JSON.stringify(charitiesData)) },
   }

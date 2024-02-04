@@ -10,8 +10,10 @@ import Footer from '@/components/Footer'
 import { ClerkProvider } from "@clerk/nextjs";
 import { Provider } from 'react-redux'
 import { store } from '@/store'
+// import { SignInWithMetamaskButton } from "@clerk/nextjs";
 
 export default function App({ Component, pageProps }: AppProps) {
+  // dbConnect();
   const [showChild, setShowChild] = useState<boolean>(false)
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return null
   } else {
     return (
-
+      
       // <ClerkProvider {...pageProps}>
       <Providers pageProps={pageProps}>
         <Provider store={store}>
@@ -45,7 +47,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </div>
         </Provider>
       </Providers>
-
       // </ClerkProvider>
 
 

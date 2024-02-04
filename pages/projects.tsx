@@ -29,7 +29,7 @@ const Page: NextPage = () => {
       <div className="h-10"></div>
       {charities && <Cards charities={charities} />}
       <div className="h-10"></div>
-      <NavBtn />
+      {/* <NavBtn /> */}
     </div>
   )
 }

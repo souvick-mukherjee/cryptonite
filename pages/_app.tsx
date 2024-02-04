@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
               closeOnClick
               rtl={false}
               pauseOnFocusLoss
-              draggable
+              draggable 
               pauseOnHover
               theme="dark"
             />

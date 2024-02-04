@@ -3,13 +3,16 @@ import Details from '@/components/Details'
 import Supports from '@/components/Supports'
 import NavBtn from '@/components/NavBtn'
 import Payment from '@/components/Payment'
-import { CharityStruct, SupportStruct } from '@/utils/type.dt'
+import { CharityStruct, RootState, SupportStruct } from '@/utils/type.dt'
 import { GetServerSidePropsContext, NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Donor from '@/components/Donor'
 import Ban from '@/components/Ban'
 import { generateCharities, generateSupports } from '@/utils/fakeData'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { globalActions } from '@/store/globalSlices'
 
 interface PageProps {
   charityData: CharityStruct
@@ -18,8 +21,16 @@ interface PageProps {
 }
 
 const Page: NextPage<PageProps> = ({ charityData, supportsData, owner }) => {
-  const charity = charityData
-  const supports = supportsData
+  
+  const { charity, supports } = useSelector((states: RootState) => states.globalStates)
+  const dispatch = useDispatch()
+  const { setCharity, setSupports, setOwner } = globalActions
+
+  useEffect(() => {
+    dispatch(setOwner(owner))
+    dispatch(setCharity(charityData))
+    dispatch(setSupports(supportsData))
+  }, [dispatch, setCharity, charityData, setSupports, supportsData])
 
   const router = useRouter()
   const { id } = router.query

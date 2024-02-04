@@ -2,6 +2,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image'
 import { FaArrowRight } from "react-icons/fa";
 import React from 'react'
+// import { SignInWithMetamaskButton } from "@clerk/nextjs";
 
 const ConnectBtn: React.FC = () => {
   return (
@@ -40,11 +41,13 @@ const ConnectBtn: React.FC = () => {
                     className="bg-purple-600 border border-purple-600 hover:bg-black
                         py-2 px-6 text-white rounded-lg
                         transition duration-300 ease-in-out"
-                    onClick={openConnectModal}
+                                           // onClick={openConnectModal}
                     type="button"
+                    // onClick={() => <SignInWithMetamaskButton/>} 
                   >
-                    {/* Connect Wallet to Login */}
-                    Get Started 
+                    Connect Wallet to Login
+                    
+                    {/* Get Started  */}
                     {/* Get Started <FaArrowRight /> */}
                   </button>
                 )

@@ -29,7 +29,7 @@ const Payment: React.FC<ComponentProp> = ({ charity, supports, owner }) => {
 
         <div className="h-1 bg-gray-300 rounded-full mb-2">
           <div
-            className="h-full overflow-hidden bg-green-600 rounded-full"
+            className="h-full overflow-hidden bg-purple-600 rounded-full"
             style={{ width: `${(charity.raised / charity.amount) * 100}%` }}
           />
         </div>
@@ -39,25 +39,25 @@ const Payment: React.FC<ComponentProp> = ({ charity, supports, owner }) => {
 
       <div className="flex flex-col space-y-2 font-semibold">
         <button
-          className="bg-amber-500 py-3 px-20 rounded-xl
+          className="bg-purple-600 py-3 px-20 rounded-xl
           transition-all duration-300 ease-in-out
-          hover:bg-amber-600"
+          hover:bg-purple-700 text-white"
         >
-          Share
+          Interested
         </button>
         {!charity.banned ? (
           <button
-            className="bg-amber-500 py-3 px-20 rounded-xl
+            className="bg-purple-600 py-3 px-20 rounded-xl
           transition-all duration-300 ease-in-out
-          hover:bg-amber-400"
+          hover:bg-purple-700"
           >
-            Donate now
+            Contribute now
           </button>
         ) : (
           <button
-            className="border border-amber-500 py-3 px-20 rounded-xl
+            className="border border-purple-600 py-3 px-20 rounded-xl
           transition-all duration-300 ease-in-out flex justify-center
-          hover:border-amber-400 hover:bg-red-100 items-center space-x-2"
+          hover:border-purple-700 hover:bg-purple-100 items-center space-x-2"
           >
             <span>Banned</span>
             <FaBan size={20} className="text-red-700 " />
@@ -84,7 +84,7 @@ const Payment: React.FC<ComponentProp> = ({ charity, supports, owner }) => {
           transition-all duration-300 ease-in-out
          hover:bg-gray-100"
         >
-          See top donations
+          See top contributions
         </button>
 
         {owner === address && (

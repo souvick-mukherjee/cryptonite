@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { MdSunnySnowing } from 'react-icons/md'
 
-const IMAGE_BANNER = 'https://cdn.pixabay.com/photo/2016/11/14/04/14/monks-1822569_1280.jpg'
+const IMAGE_BANNER = '/assets/imgs/pexels-dio-hasbi-saniskoro-3280130.jpg'
 const Banner: React.FC<{ mine?: boolean }> = ({ mine }) => {
   return (
     <div
@@ -14,21 +14,21 @@ const Banner: React.FC<{ mine?: boolean }> = ({ mine }) => {
       <div className="flex flex-col justify-end text-white p-8 space-y-8 relative z-10 h-80">
         {!mine ? (
           <h1 className="text-7xl text-center font-semibold">
-            Your Home <br /> for Help
+            By the Community. <br /> For the Community.
           </h1>
         ) : (
           <h1 className="text-7xl text-center font-semibold">
-            Your Charity <br /> Projects
+            By the Community. <br /> For the Community.
           </h1>
         )}
         <Link
           href={'/donations/create'}
-          className="bg-white text-green-600 px-4 space-x-1
+          className="bg-white text-purple-600 px-4 space-x-1
         flex justify-center items-center rounded-full text-center py-3
-        transition duration-300 ease-in-out hover:bg-green-600 hover:text-white"
+        transition duration-300 ease-in-out hover:bg-purple-600 hover:text-white"
         >
-          <MdSunnySnowing size={25} />
-          <span>Start a Dapp Fund</span>
+          
+          <span>Explore Web 3.0 Events</span>
         </Link>
       </div>
     </div>

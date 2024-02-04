@@ -51,7 +51,7 @@ const Page: NextPage<PageProps> = ({ charityData, supportsData, owner }) => {
           <Donor charity={charity} />
           <Ban charity={charity} />
           <Supports supports={supports} />
-          <NavBtn owner={charity?.owner} donationId={Number(id)} />
+          {/* <NavBtn owner={charity?.owner} donationId={Number(id)} /> */}
         </>
       )}
     </div>

@@ -18,7 +18,7 @@ const Start: React.FC = () => {
         <Link
           href={'/'}
           className="w-full lg:w-80 flex flex-col border-2 border-transparent
-          justify-center items-center space-y-4 rounded-lg hover:border-green-600
+          justify-center items-center space-y-4 rounded-lg hover:border-purple-600
           transition-all duration-300 ease-in-out cursor-pointer mt-4 lg:mt-0"
         >
           <img src="https://d25oniaj7o2jcw.cloudfront.net/start-yourself.png" alt="yourself" />
@@ -29,7 +29,7 @@ const Start: React.FC = () => {
         <Link
           href={'/'}
           className="w-full lg:w-80 flex flex-col border-2 border-transparent
-          justify-center items-center space-y-4 rounded-lg hover:border-green-600
+          justify-center items-center space-y-4 rounded-lg hover:border-purple-600
           transition-all duration-300 ease-in-out cursor-pointer mt-4 lg:mt-0"
         >
           <img src="https://d25oniaj7o2jcw.cloudfront.net/start-friends-family.png" alt="f&f" />
@@ -40,7 +40,7 @@ const Start: React.FC = () => {
         <Link
           href={'/'}
           className="w-full lg:w-80 flex flex-col border-2 border-transparent
-          justify-center items-center space-y-4 rounded-lg hover:border-green-600
+          justify-center items-center space-y-4 rounded-lg hover:border-purple-600
           transition-all duration-300 ease-in-out cursor-pointer mt-4 lg:mt-0"
         >
           <img src="https://d25oniaj7o2jcw.cloudfront.net/start-charity.png" alt="charity" />

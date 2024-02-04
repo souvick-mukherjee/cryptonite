@@ -8,7 +8,7 @@ import '@openzeppelin/contracts/access/AccessControl.sol';
 
 import "hardhat/console.sol";
 
-contract CityBeat is Ownable, AccessControl {
+contract Cryptonite is Ownable, AccessControl {
   using Counters for Counters.Counter;
   Counters.Counter private _totalEvents;
   Counters.Counter private _totalUsers;
@@ -24,18 +24,15 @@ contract CityBeat is Ownable, AccessControl {
   
   mapping(uint256 => EventStruct) events;
   mapping(uint256 => bool) public eventExist;
-  mapping(uint256 => UserStruct[]) interestedOf;
+  mapping(uint256 => EventStruct[]) interestedOf;
   mapping(uint256 => UserStruct[]) supportersOf;
 
 
   struct UserStruct {
     uint256 id;
     address owner;
-    string firstName;
-    string lastNme;
     string userName;
     string email;
-    string password;
     string phone;
   }
 
@@ -60,18 +57,12 @@ contract CityBeat is Ownable, AccessControl {
   }
 
   function createUser(
-    string memory firstName,
-    string memory lastName,
     string memory userName,
     string memory email,
-    string memory password,
     string memory phone
   ) public returns (bool, string memory) {
-    require(bytes(firstName).length > 0, 'First Name cannot be empty');
-    require(bytes(lastName).length > 0, 'Last Name cannot be empty');
     require(bytes(userName).length > 0, 'User Name cannot be empty');
     require(bytes(email).length > 0, 'Email cannot be empty');
-    require(bytes(password).length > 0, 'Password cannot be empty');
     require(bytes(phone).length > 0, 'Phone cannot be empty');
 
     if(userEmailExist[email] == true || userUserNameExist[userName] == true) {
@@ -82,11 +73,8 @@ contract CityBeat is Ownable, AccessControl {
     UserStruct memory user;
     user.id = _totalUsers.current();
     user.owner = msg.sender;
-    user.firstName = firstName;
-    user.lastNme = lastName;
     user.userName = userName;
     user.email = email;
-    user.password = password;
     user.phone = phone;
 
     users[user.id] = user;
@@ -101,27 +89,18 @@ contract CityBeat is Ownable, AccessControl {
 
   function updateUser(
     uint256 id,
-    string memory firstName,
-    string memory lastName,
     string memory userName,
     string memory email,
-    string memory password,
     string memory phone
   ) public {
     require(userExist[id], 'User Not Found');
     require(msg.sender == users[id].owner, 'Unauthorized Entity');
-    require(bytes(firstName).length > 0, 'First Name cannot be empty');
-    require(bytes(lastName).length > 0, 'Last Name cannot be empty');
     require(bytes(userName).length > 0, 'User Name cannot be empty');
     require(bytes(email).length > 0, 'Email cannot be empty');
-    require(bytes(password).length > 0, 'Password cannot be empty');
     require(bytes(phone).length > 0, 'Phone cannot be empty');
 
-    users[id].firstName = firstName;
-    users[id].lastNme = lastName;
     users[id].userName = userName;
     users[id].email = email;
-    users[id].password = password;
     users[id].phone = phone;
   }
 
@@ -165,6 +144,8 @@ contract CityBeat is Ownable, AccessControl {
     myEvent.image = image;
     myEvent.location = location;
     myEvent.amount = amount;
+    myEvent.raised = 0;
+    myEvent.donations = 0;
     myEvent.deleted = false;
     myEvent.isLive = true;
 
@@ -186,7 +167,7 @@ contract CityBeat is Ownable, AccessControl {
     require(bytes(description).length > 0, 'Description cannot be empty');
     require(bytes(image).length > 0, 'Image cannot be empty');
     require(bytes(location).length > 0, 'Location cannot be empty');
-    require(amount > 0 ether, 'Amount cannot be zero');
+    require(amount >= 0 ether, 'Amount cannot be less than zero');
 
     events[id].name = name;
     events[id].description = description;
@@ -248,5 +229,26 @@ contract CityBeat is Ownable, AccessControl {
         Events[index++] = events[i];
       }
     }
+  }
+
+  function donate(uint256 id) public payable {
+    require(eventExist[id], 'Event Not Found');
+    require(!events[id].banned, 'Event Banned, contact admin');
+    require(msg.value > 0 ether, 'Donation cannot be zero');
+    require(events[id].raised < events[id].amount, 'Charity budget fulfilled');
+
+    supportersOf[id].push( getUser(msg.sender) );
+
+    events[id].raised += msg.value;
+    events[id].donations += 1;
+
+    payTo(events[id].owner, msg,value);
+  }
+
+  function interest(uint256 id) public view {
+    require(eventExist[id], 'Event Not Found');
+    require(!events[id].banned, 'Event Banned, contact admin');
+
+    interestedOf[msg.sender].push( getEvent(id) );
   }
 }
